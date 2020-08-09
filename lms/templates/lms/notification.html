@@ -1,0 +1,22 @@
+{% extends "lms/layout.html" %}
+
+{% block body %}
+    {% if user.is_authenticated %}
+        <h3>Notifications</h3>
+        <hr>
+        <div class="notifs">
+            <ul>
+            {% if notifs|length > 0 %}
+                {% for notif in notifs %}
+                    <li>{{ notif.timestamp|date:'d M Y, H:i A' }}:<br/>{{ notif.text | safe }}</li>
+                {% endfor %}
+            </ul>
+            {% else %}
+                No updates to show.
+            {% endif %}
+        </div>
+
+    {% else %}
+    You must be logged in to view this page.
+    {% endif %}
+{% endblock %}

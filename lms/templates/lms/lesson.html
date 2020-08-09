@@ -1,0 +1,10 @@
+{% extends "lms/layout.html" %}
+
+{% block body %}
+    <a href="{% url 'lessons' %}">Back</a>
+    <h2 style="text-align:center">{{lesson.title}}</h2>
+    <div class='embed-container' id="video">
+        <iframe src="{{ lesson.get_embed_url }}" frameborder='0' allowfullscreen>
+        </iframe>
+    </div>
+{% endblock %}

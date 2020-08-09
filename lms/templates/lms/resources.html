@@ -1,0 +1,50 @@
+{% extends "lms/layout.html" %}
+
+{% block body %}
+    <!-- Check if student or teacher-->
+    {% if user.role == 'teacher' %}
+    <form method="POST" enctype="multipart/form-data" class="upload-resource-form"> 
+        {% csrf_token %}
+        <input type="submit" class="btn btn-primary upload-button" value="Upload">
+        
+        {% for field in upload_form %}
+            <div id="form-field" style="display:inline-block">
+                {{ field }}
+            </div>
+        {% endfor %}
+        <hr>
+    </form>
+    {% endif %}
+    <!-- List of uploaded resources -->
+    {% if resources %}
+        {% for subject, documents in resources.items %}
+                <h5>{{ subject.title }}</h5>
+                <table style="width: 100%">
+                    <tr>
+                        <th>File</th>
+                        <th>Filesize</th>
+                        <th>Uploaded By</th>
+                        <th>Last Modified</th>
+                    </tr>
+                    {% for document in documents %}
+                        <tr>
+                            <td>
+                                <a href="{{ document.doc.url }}">{{ document.filename }}</a>
+                                {% if user.role == 'teacher' %}
+                                <div class="delete-resource" id="{{ document.id }}-{{document.filename}}">
+                                    Delete
+                                </div>
+                                {% endif %}
+                            </td>
+                            <td> {{ document.doc.size|filesizeformat }}</td>
+                            <td>{{ document.uploaded_by }}</td>
+                            <td>{{ document.timestamp }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+                <br/>
+        {% endfor %}
+    {% else %}
+        <p>No resources.</p>
+    {% endif %}
+{% endblock %}

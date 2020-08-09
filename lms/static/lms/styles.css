@@ -1,0 +1,188 @@
+body {
+    padding: 10px;
+}
+
+.navbar {
+    margin-bottom: 1rem;
+}
+
+/*for lesson page*/
+.embed-container { 
+    position: relative; 
+    padding-bottom: 56.25%; height: 0; 
+    overflow: hidden; 
+    max-width: 100%; 
+} 
+
+.embed-container iframe, .embed-container object, .embed-container embed { 
+    position: absolute; 
+    top: 0; 
+    left: 5%; 
+    width: 90%; 
+    height: 100%;
+}
+
+.subject-list ul {
+    list-style-type: none;
+    padding: 0;
+    border: 1px solid #ddd;
+}
+
+.subject-list ul li {
+    padding: 8px 16px;
+    border-bottom: 1px solid #ddd;
+}
+
+.subject-list ul li:last-child {
+    border-bottom: none;
+}
+
+.subject-list a {
+    color: blue;
+}
+
+/* for notifs page */
+.notifs {
+    margin: 10px;
+}
+
+.notifs ul {
+    border-left: 5px solid red;
+    background-color: #f1f1f1;
+    list-style-type: none;
+    padding: 10px 20px;
+}
+
+.notifs ul li {
+    margin-bottom: 1rem;
+}
+
+.notifs ul li:last-child {
+    margin-bottom: 0;
+}
+
+/*for updates/index page*/
+.update-content {
+    margin-left: 10px;
+}
+
+.update-container {
+    border: 0.5px solid grey;
+    border-radius: 5px;
+    margin: 10px;
+    margin-left: 0px;
+    padding-left: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+textarea {
+    border: 0.5px solid grey;
+    padding: 5px;
+}
+
+@media only screen and (max-width:600px) {
+    textarea {
+        width: 20em;
+        height: 5em;
+    }
+}
+
+/*for assignment page*/
+#form-field {
+    margin-bottom: 0.2em;
+}
+
+.assign-container {
+    border: 0.5px solid grey;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 1rem;
+}
+
+/*for resources page*/
+.upload-resource-form {
+    font-size: 14px;
+}
+
+.upload-button {
+    font-size: 14px;
+    padding: 5px;
+}
+
+.delete-resource {
+    font-size: 12px;
+    float: right;
+    color: blue;
+}
+
+.delete-resource:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+@media only screen and (max-width:500px) {
+    .upload-resource-form {
+        display: grid;
+        row-gap: 0.5em;
+    }
+    .upload-button {
+        width: 20%;
+    }
+}
+
+/*for forum page*/
+.search-bar {
+    margin-bottom: 1em;
+}
+
+.search-input {
+    border: 1px solid grey;
+    border-radius: 5px;
+    height: 2em;
+    padding-left: 5px;
+}
+
+.search-button {
+    border: 1px solid green;
+    border-radius: 5px;
+    height: 2em;
+}
+
+.search-button:hover {
+    background-color: lightgreen;
+}
+
+.forum-table td, tr {
+    padding: 1rem;
+}
+
+.reply-container {
+    border: 0.5px solid grey;
+    margin: 10px;
+    margin-left: 0px;
+    padding: 1rem;
+}
+
+.reply-content {
+    margin-left: 0.5rem;
+}
+
+#edit {
+    margin-top: 0.5rem;
+    color: blue;
+}
+
+#edit:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+
+/*for tables*/
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 5px;
+    font-size: 14px;
+}

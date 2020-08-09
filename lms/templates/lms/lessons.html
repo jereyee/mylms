@@ -1,0 +1,42 @@
+{% extends "lms/layout.html" %}
+
+{% block body %}
+    <!-- Check if student or teacher-->
+    {% if user.role == 'teacher' %}
+            <button type="button" class="btn btn-info" id="create-assignment">
+                Add Lesson
+            </button>
+            <div id="assignment-form" style="display:none">
+            <form method="POST"> 
+                {% csrf_token %}
+                {% for field in lesson_form %}
+                    <div class="label-tag">{{ field.label_tag }}</div>
+                    <div id="form-field">
+                        {{ field }}
+                    </div>
+                {% endfor %}
+                <input type="submit" class="btn btn-primary" value="Create">
+            </form>
+            </div>
+        <hr>
+    {% endif %}
+    <h2>My Lessons</h2>
+    {% for subject, subj_lessons in lessons.items %}
+        <div class="lesson-subject" id="{{subject}}">
+            <button type="button" class="btn btn-link subject-title">{{ subject.title }}</button>
+            <div class="subject-list" style="display:none">
+                <ul>
+                    {% for lesson in subj_lessons %}
+                        <div class="lesson-container" id="{{lesson.id}}">
+                            <li> <a href="{% url 'lesson' lesson.id %}"> {{ lesson.title }} </a></li>
+                            <!--div id="lesson-urls" style="display:none">{{lesson.get_embed_url}}</div>-->
+                        </div>
+                    {% endfor %}
+                    {% if subj_lessons|length == 0 %}
+                        <li>No lessons yet.</li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

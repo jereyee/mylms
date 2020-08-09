@@ -1,0 +1,46 @@
+{% extends "lms/layout.html" %}
+
+{% block body %}
+    <!-- Check if student or teacher-->
+    {% if user.role == 'teacher' %}
+            <button type="button" class="btn btn-info" id="create-assignment">
+                Create Assignment
+            </button>
+            <div id="assignment-form" style="display:none">
+            <form method="POST"> 
+                {% csrf_token %}
+                {% for field in assignment_form %}
+                    <div class="label-tag">{{ field.label_tag }}</div>
+                    <div id="form-field">
+                        {{ field }}
+                    </div>
+                {% endfor %}
+                <input type="submit" class="btn btn-primary" value="Create">
+            </form>
+            </div>
+        <hr>
+    {% endif %}
+    <!-- List of assignments -->
+    <h3>Assignments</h3>
+    {% if assignments %}
+        {% for assign in assignments %}
+            <div class='assign-container'>
+                <a href="{% url 'submission' assign.id %}">
+                    {{ assign.subject }} - <b>{{ assign.title }}</b>
+                </a>
+                <br/>
+                Status: 
+                {% if now > assign.deadline  %}
+                    <div style="color:red;display:inline-block;">Closed</div>
+                {% else %}
+                    <div style="color: green;display:inline-block;">Open</div>
+                    <br/>
+                    Due: {{ assign.deadline|date:"jS F Y H:i A" }}
+                {% endif %}
+                <br/>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No assignments to show.</p>
+    {% endif %}
+{% endblock %}

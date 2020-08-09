@@ -1,0 +1,80 @@
+{% extends "lms/layout.html" %}
+
+{% block body %}
+    {% if user.is_authenticated %}
+        <!--If this is the main forum page-->
+        {% if main %}
+            <h3>Forum</h3>
+            <hr>
+            <div class="search-bar">
+                <form method="GET">
+                    <input type="search" class="search-input" placeholder="Look for a post..." name="q">
+                    <input type="submit" class="search-button" value="Search"></button>
+                </form>
+            </div>
+            {% for subject in subjects %}
+                <a href="{% url 'forum_posts' subject.name %}">
+                    <strong>{{ subject.name.title }} </strong>
+                </a>
+                <br/>
+            {% endfor %}
+            <hr>
+            <!--queried posts-->
+            {% if posts|length > 0 %}
+                <h5>Search results: </h5>
+            {% endif %}
+            <table class="forum-table" width="100%">
+                {% for post in posts %}
+                    <tr>
+                        <td>
+                            <a href="{% url 'post' post.subject.name post.id %}">
+                            <strong>{{ post.title }} </strong>
+                            </a>
+                            <br/>
+                            Posted at {{ post.timestamp }} by {{ post.user }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        <!--If this is a subject forum page-->
+        {% else %}
+            <a href="{% url 'forum' %}">Back</a>
+            <h3>Forum - {{ subject }} </h3>
+            <hr>
+            <h5>All Posts: </h5>
+            {% if posts|length == 0 %}
+                There's no forum posts yet!
+            {% else %}
+                <table class="forum-table">
+                    {% for post in posts %}
+                        <tr>
+                            <td>
+                                <a href="{% url 'post' subject post.id %}">
+                                <strong>{{ post.title }} </strong>
+                                </a>
+                                <br/>
+                                Posted at {{ post.timestamp }} by {{ post.user }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            {% endif %}
+            <hr>
+            <h5>Create Post: </h5>
+            <form method="POST">
+                {% csrf_token %}
+                {% for field in post_form %}
+                    {{ field.label_tag }} 
+                    <br/>
+                    {{ field }}
+                    <br/>
+                {% endfor %}
+                <input type="submit" value="Submit">
+            </form>
+        {% endif %}
+
+    {% else %}
+        You must be logged in to view this page.
+    {% endif %}
+
+{% endblock %}

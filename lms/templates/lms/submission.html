@@ -1,0 +1,57 @@
+{% extends "lms/layout.html" %}
+
+{% block body %}
+
+    <!-- Details -->
+    <a href="{% url 'assignments' %}">Back to assignments</a>
+    <h3>{{ assign.title }}</h3>
+    Due: {{ assign.deadline|date:"jS F Y H:i A" }}
+    <br/>
+    Subject: {{ assign.subject }}
+    <br/>
+    Opened by: {{ assign.opened_by }}
+    <br/>
+    Instructions: {{ assign.description }}   
+    <hr>
+    <!-- Check if student or teacher-->
+    {% if user.role == 'teacher' %}
+        <h5>Student Submissions</h5>
+        <table style="width:100%">
+            <tr>
+                <th>Name</th>
+                <th>File</th>
+                <th>Size</th>
+                <th>Time</th>
+            </tr>
+            {% for sub in submissions %}
+                <tr>
+                    <td>{{ sub.student.username.title }}</td>
+                    <td><a href="{{ sub.doc.url }}">{{ sub.filename }}</a></td>
+                    <td>{{ sub.doc.size|filesizeformat }}</td>
+                    <td>{{ sub.timestamp }}</td>
+                </tr>
+            {% endfor %}
+            {% for student in unsubmitted_students %}
+                <tr>
+                    <td>{{ student.username.title }}</td>
+                    <td>Unsubmitted</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+            {% endfor %}
+        </table>
+
+    {% elif user.role == 'student' %}
+        <h5>Submit</h5>
+        {% if submission_form is not None %}
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ submission_form }}
+                <br/>
+                <input type="submit" value="Submit" style="margin-top:10px">
+            </form>
+        {% endif %}
+        {{ message }}
+    {% endif %}
+
+{% endblock %}

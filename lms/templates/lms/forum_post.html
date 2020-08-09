@@ -1,0 +1,53 @@
+{% extends "lms/layout.html" %}
+
+{% block body %}
+    {% if user.is_authenticated %}
+        <a href="{% url 'forum_posts' subject.lower %}">Back</a>
+        <h3>Forum - {{ subject.title }} - {{ post.title }}</h3>
+        <div class="post-container">
+            <small>
+                Title: {{ post.title }}
+                <br/>
+                Posted by: {{ post.user }}
+                <div id="post-timestamp">
+                {% if post.last_modified != null %}
+                    Last modified: {{ post.last_modified }} (edited)
+                {% else %}
+                    Time: {{ post.timestamp }}
+                {% endif %}
+                </div>
+            </small>
+            <hr>
+            <div id="post-content">
+            {{ post.content }}
+            </div>
+            {% if user == post.user %}
+                <div id="edit">Edit</div>
+            {% endif %}
+            <hr>
+            <h5>Replies: </h5>
+            {% for reply in replies %}
+                <div class="reply-container">
+                    <strong>{{ reply.user }}</strong> replied: <br/>
+                    <div class="reply-content">
+                    {{ reply.content }}
+                    </div>
+                    <small><em>{{ reply.timestamp }}</em></small>
+                    <br/>
+                </div>
+            {% endfor %}
+            <br/>
+            <h6>Post a reply:</h6>
+            <form method="POST">
+                {% csrf_token %}
+                {{ comment_form }}
+                <br/>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+
+    {% else %}
+        You must be logged in to view this page.
+    {% endif %}
+
+{% endblock %}
