@@ -1,0 +1,288 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>README.md</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="mylms">MyLMS</h1>
+<p>MyLMS is a Learning Management System (LMS) - a simple online platform for learning and education. It aims to condense and smoothen the workflow between teachers and students, providing a shared digital medium as a learning space.</p>
+<h2 id="overview">Overview</h2>
+<p>The project consists of three unique users (<strong>teacher, student, admin</strong>). It contains 9 base pages - <strong>Login</strong>, <strong>Register</strong>, <strong>Updates</strong>, <strong>Lessons</strong>, <strong>Resources</strong>, <strong>Assignments</strong>, <strong>Submissions</strong>, <strong>Forum</strong>, <strong>Notifications</strong>. These will be explained in further detail below.</p>
+<h2 id="features">Features</h2>
+<h3 id="students">Students:</h3>
+<ul>
+<li>
+<p><strong>Updates page</strong></p>
+<ul>
+<li>Students who are logged in should be able to see all the latest updates from all teachers</li>
+<li>An update should show the:
+<ul>
+<li>Teacher name</li>
+<li>Timestamp of update</li>
+<li>Content of update</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Resources page</strong></p>
+<ul>
+<li>Students who are logged in should have access to a resources page, where they can see the latest files uploaded by their teachers</li>
+<li>Resources should only be shown to students who are registered with that subject.
+<ul>
+<li>Every file should show the:
+<ul>
+<li>Filename</li>
+<li>Timestamp of upload</li>
+<li>User that uploaded it</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Assignments page:</strong></p>
+<ul>
+<li>Students who are logged in should be able to view all their assignments, in backwards chronological order.</li>
+<li>Assignments should only be shown if the student is taking that subject.</li>
+<li>Each assignment should show the status (open/closed), and the deadline.</li>
+<li>Clicking on an assignment should take them to that 		assignment's page.</li>
+<li>The assignment page should show the:
+<ul>
+<li>Deadline</li>
+<li>Teacher that created the assignment</li>
+<li>Title</li>
+<li>Further instructions</li>
+</ul>
+</li>
+<li>The student should be allowed to submit their homework if the deadline has not yet passed.</li>
+<li>Once submitted, the submission should be recorded as submitted.</li>
+<li>If the deadline has passed, students will not be allowed to submit their homework anymore.</li>
+<li>If the deadline has passed and student has not submitted, the submission should be marked as unsubmitted.</li>
+</ul>
+</li>
+<li>
+<p><strong>Forum page:</strong></p>
+<ul>
+<li>The forum should allow both students and teachers to post questions or any subject-related matters.</li>
+<li>Original poster should be allowed to edit his/her posts <strong>asynchronously</strong>.</li>
+<li>The main forum page lists the subjects, and when clicked, are taken to the respective subject forums.</li>
+<li>Each subject forum should show a list of all forum posts.</li>
+<li>Both students and teachers are able to reply to forum posts.</li>
+<li>The forum page should only show the subjects pertaining to each student/teacher.</li>
+<li>Users should be allowed to search for a forum post based on the title with the search bar.</li>
+</ul>
+</li>
+<li>
+<p><strong>Video Lessons page:</strong></p>
+<ul>
+<li>Students are able to view the YouTube video lessons from the subjects they are taking.</li>
+<li>Clicking on a subject will show the list of all the lessons for that particular subject.</li>
+<li>Clicking on a lesson will take the student to the lesson page, which shows an embedded YouTube video which is watchable on-site.</li>
+</ul>
+</li>
+</ul>
+<h3 id="teachers">Teachers</h3>
+<ul>
+<li>
+<p><strong>Updates page</strong> :</p>
+<ul>
+<li>Only teachers should be allowed to post new updates.</li>
+</ul>
+</li>
+<li>
+<p><strong>Resources page:</strong></p>
+<ul>
+<li>Only teachers should be allowed to upload resources.</li>
+<li>Once uploaded, the page should refresh showing the list of all uploaded resources.</li>
+<li>Teachers can delete their resources <strong>asynchronously</strong>.</li>
+<li>Before deleting resource, a confirmation is always required.</li>
+</ul>
+</li>
+<li>
+<p><strong>Assignments page:</strong></p>
+<ul>
+<li>In every assignment page, teacher should be able to see the list of submissions from their students.</li>
+<li>They should also see students that have not submitted that particular assignment
+<ul>
+<li>If the student registered after the submission deadline had closed, then the student will not appear in the student list.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Forum page:</strong></p>
+<ul>
+<li>Teachers are allowed to comment on any questions posted by the students.</li>
+<li>They should also be allowed to post their own posts.</li>
+</ul>
+</li>
+<li>
+<p><strong>Lessons page:</strong></p>
+<ul>
+<li>Students are allowed to create lessons for the subjects they are teaching.</li>
+</ul>
+</li>
+</ul>
+<h3 id="admin">Admin</h3>
+<ul>
+<li><strong>User approval</strong> :
+<ul>
+<li>Admin will be in charge of approving newly-registered user based on their delegated roles.</li>
+</ul>
+</li>
+<li><strong>Creating subjects:</strong>
+<ul>
+<li>Admin will be responsible for creating subjects based on a given list.</li>
+</ul>
+</li>
+<li><strong>Deleting posts/updates</strong> :
+<ul>
+<li>Only admin has the authority to delete forum posts and updates.</li>
+</ul>
+</li>
+<li><strong>Editing data when necessary (e.g. Lessons, Assignments, etc.)</strong></li>
+<li><strong>The admin also has the privileges of a teacher.</strong></li>
+</ul>
+<h3 id="notifications"><strong>Notifications</strong></h3>
+<ul>
+<li>Clicking on the username in the navigation bar should take the user to a page that displays the notifications for the particular user.</li>
+<li>Notifications will be sorted in reverse chronological order, and should include the time when the user was notified.</li>
+<li><strong>Standard notifications</strong> are sent out when:
+<ul>
+<li>Teachers make an update post.</li>
+<li>Teachers add a new lesson.</li>
+<li>Teachers create a new assignment.</li>
+<li>A user posts on the forum.</li>
+<li>A user replies a forum post that has been previously made by the logged-in user.</li>
+</ul>
+</li>
+<li>In addition, notifications are sent out to the corresponding teacher when a student submits an assignment.</li>
+</ul>
+<h2 id="relevant-files">Relevant Files</h2>
+<p>This section will explain the files and its corresponding pages. For more details on the page features, refer to the section above.</p>
+<h3 id="html-templates">HTML Templates</h3>
+<ol>
+<li><strong>layout.html</strong>
+<ul>
+<li>contains navbar, header and meta scripts</li>
+</ul>
+</li>
+<li><strong>index.html</strong>
+<ul>
+<li>root path that contains the main ‘Updates’ page</li>
+</ul>
+</li>
+<li><strong>assignments.html</strong>
+<ul>
+<li>‘Assignments’ page, allows teachers to create assignments</li>
+</ul>
+</li>
+<li><strong>submission.html</strong>
+<ul>
+<li>‘Assignments’ sub-page, displays the homework and submission details.</li>
+</ul>
+</li>
+<li><strong>forum.html</strong>
+<ul>
+<li>‘Forums’ page with search bar, subject navigation, list of posts and option to create a post</li>
+</ul>
+</li>
+<li><strong>forum_post.html</strong>
+<ul>
+<li>‘Forums’ sub-page, displays selected forum post with replies and option to reply</li>
+</ul>
+</li>
+<li><strong>lessons.html</strong>
+<ul>
+<li>‘Video Lessons’ page that displays lessons for each subject and allows teachers to create lessons</li>
+</ul>
+</li>
+<li><strong>lesson.html</strong>
+<ul>
+<li>‘Video Lessons’ sub-page, displays selected video lesson</li>
+</ul>
+</li>
+<li><strong>login.html</strong>
+<ul>
+<li>login page that displays error messages (e.g. ‘not yet approved’)</li>
+</ul>
+</li>
+<li><strong>register.html</strong>
+<ul>
+<li>registration page where users can choose their subjects and roles</li>
+</ul>
+</li>
+<li><strong>notification.html</strong>
+<ul>
+<li>‘Notification’ page which lists all notifications pertaining to the logged-in user.</li>
+</ul>
+</li>
+<li><strong>resources.html</strong>
+<ul>
+<li>‘Resources’ page that shows all resources by subject</li>
+</ul>
+</li>
+</ol>
+<h3 id="models.py"><a href="http://models.py">models.py</a></h3>
+<p>Contains all Models:</p>
+<ol>
+<li><strong>User:</strong></li>
+</ol>
+<ul>
+<li>Additional ‘role’ field that marks the user as ‘student’ or ‘teacher’</li>
+<li>Once registered, account can only be approved by admin before signing in.</li>
+<li>Otherwise, an error message should indicate that the account has not yet been approved.</li>
+</ul>
+<ol start="2">
+<li><strong>Update</strong></li>
+<li><strong>Resource</strong></li>
+<li><strong>Assignment</strong></li>
+<li><strong>Submission</strong></li>
+<li><strong>Subject</strong></li>
+<li><strong>Post</strong></li>
+<li><strong>Comment</strong></li>
+<li><strong>Lesson</strong></li>
+<li><strong>Notification</strong></li>
+</ol>
+<h3 id="forms.py"><a href="http://forms.py">forms.py</a></h3>
+<p>Contains all form classes that are built for creating the model objects.</p>
+<h3 id="urls.py"><a href="http://urls.py">urls.py</a></h3>
+<p>Contains all traversable path patterns.</p>
+<h3 id="views.py"><a href="http://views.py">views.py</a></h3>
+<p>List of views for the application.  Handles the logic for HTTP requests and form submissions and renders the appropriate HTML template accordingly.</p>
+<h3 id="static-files">static files</h3>
+<ul>
+<li><strong>script.js</strong>
+<ul>
+<li>handles JavaScript for DOM manipulation. Also uses the fetch API() for server-side requests.</li>
+</ul>
+</li>
+<li><strong>styles.css</strong>
+<ul>
+<li>handles all CSS styles and elements</li>
+</ul>
+</li>
+</ul>
+<h2 id="project-justification">Project Justification</h2>
+<p>This project has features inspired by the previous projects (i.e. search bar in 'wiki', post updates in 'network'), but it carries its own distinction and a wider complexity. The distinguishing features include, but are not exclusive to:</p>
+<ol>
+<li>Delegated user roles with specific permissions (teacher, student, admin)</li>
+<li>Uploading of files (resources, submissions page)</li>
+<li>Asynchronous deletion of files (resources page)</li>
+<li>Notification system (notifications page)</li>
+<li>Embedding external videos (lessons page)</li>
+<li>Assignment-tracking (assignments page)</li>
+<li>Mobile-responsiveness</li>
+</ol>
+<p>It utilizes 10 Django models, with numerous Many-To-Many fields. It also employs datetime formatting, with a JavaScript datepicker to set the deadline of assignments. In terms of UI, it was designed for a simple look/feel, with seamless navigation between the different parts. Interrelating multiple components and user-types to create a functioning Learning Management System thus gives shape to the intricate complexity of this project.</p>
+</div>
+</body>
+
+</html>
